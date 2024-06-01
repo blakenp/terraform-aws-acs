@@ -5,7 +5,10 @@ terraform {
   }
 }
 
-data "aws_region" "current" {}
+data "aws_iam_account_alias" "current" {
+  count = 0 // Do not fetch account alias if not needed
+}
+
 data "aws_iam_account_alias" "current" {}
 
 data "aws_ssm_parameter" "acs_parameters" {
